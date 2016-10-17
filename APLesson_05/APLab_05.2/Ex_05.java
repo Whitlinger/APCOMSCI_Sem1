@@ -7,6 +7,12 @@ public class Ex_05
 	
 	public static void main(String[]args)
 	{
+		adventure(); 
+		
+	}
+	
+	public static void adventure()
+	{
 		Scanner kb = new Scanner(System.in);
 		
 		System.out.println("You are trapped in a locked room. There is nothing in the room, except for 1 RED key and 1 GREEN key. What do you do?"); 
@@ -27,13 +33,30 @@ public class Ex_05
 				{
 					System.out.println("You hesitate, and the snarling sound grows louder. Something bounds toward you, and you realize it's a puppy. The sound wasn't snarling, but the yelps of an excited dog. You pet it briefly, before opening the door and making your way back to the outside world.\nGOOD END.");
 				}
-				else 
+				else if (c3.equals("A") || c3.equals("a"))
 					System.out.println("You grab the fire extinguisher as the snarling sound grows louder, and swing it at whatever is running towards you. A startled whimper comes from the creature, and you realize it's just a puppy. Shouting comes from somewhere within the building, and the puppy's owner appears with an AK-47 in his arms. You've just hurt his puppy, and he does NOT look happy.\nBAD END");
+				else
+				{
+					System.out.println("Choose only option A or B!"); 
+					adventure();
+				}
 			}
-			else 
+			else if (c2.equals("B") || c2.equals("b"))
 				System.out.println("You turn right, and bump into a man holding an AK-47. He starts shouting at you in a language you can't understand, and raises his firearm. You gulp. This isn't going to be pretty.\nBAD END.");
+			else 
+			{
+				System.out.println("Choose only option A or B!"); 
+				adventure(); 
+			}
+		}
+		else if (c1.equals("B") || c1.equals("b"))
+		{
+			System.out.println("You use the green key on the door. An alarm starts blaring overhead, and you know you're pretty screwed.\nBAD END"); 
 		}
 		else 
-			System.out.println("You use the green key on the door. An alarm starts blaring overhead, and you know you're pretty screwed.\nBAD END"); 
+		{
+			System.out.println("Choose only option A or B!"); 
+			adventure(); 
+		}
 	}
 }
