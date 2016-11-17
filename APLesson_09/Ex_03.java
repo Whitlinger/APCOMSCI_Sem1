@@ -1,15 +1,12 @@
-import java.util.Scanner; 
 public class Ex_03
 {
 	public static void main(String[]args)
-	{
-		Scanner kb = new Scanner(System.in); 
+	{ 
 		int[] numbers = new int[10];
 		
-		System.out.println("Please enter 10 numbers:"); 
 		for(int i = 0; i < numbers.length; i++)
 		{
-			numbers[i] = kb.nextInt(); 
+			numbers[i] = (int)(Math.random()*100)+1; 
 		}
 		
 		System.out.println("Numbers..."); 
