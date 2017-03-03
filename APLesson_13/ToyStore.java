@@ -95,11 +95,6 @@ public class ToyStore
 	
 	public String toString() 
 	{
-		String toyz = "";
-		for(Toy x : toyList)
-		{
-        toyz += (x.toString() + "\n"); 
-		}
-		return toyz;
+		return ""+ toyList;
 	}
 }

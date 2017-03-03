@@ -8,7 +8,7 @@ public class ToyStoreRunner
 		ToyStore object = new ToyStore(ts);
 		
 		System.out.println("List...\n" + ts + "\n\n" + object.toString());
-		System.out.println("Most Frequent Toy: " + object.getMostFrequentToy());
+		System.out.println("\nMost Frequent Toy: " + object.getMostFrequentToy());
 		System.out.println("Most Frequent Type of Toy: " + object.getMostFrequentType());
 	}
 }

@@ -4,7 +4,7 @@ public class TicketDriver
 	{
 		Ticket w = new Walkup();
 		Ticket a = new Advance(7);
-		Ticket s = new StudentAdvance(10);
+		Ticket s = new StudentAdvance(11);
 		
 		System.out.println(w + "\n\n" + a + "\n\n" + s); 
 	}
