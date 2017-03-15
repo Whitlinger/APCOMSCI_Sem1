@@ -1,13 +1,7 @@
-public class GMC implements Location
+public class GMC extends Car
 {
 	private double xLoc; 
 	private double yLoc;
-	
-	public GMC()
-	{
-		xLoc = 0;
-		yLoc = 0; 
-	}
 	
 	public GMC(double x, double y)
 	{
@@ -15,23 +9,17 @@ public class GMC implements Location
 		yLoc = y; 
 	}
 	
-	public int getID()
-	{
-		return (int)(Math.random()*899999) + 100000; 
-	}
-	
 	public void move(double x, double y)
 	{
 		xLoc += x;
-		yLoc += y; 
+		yLoc += y;
 	}
 	
 	public double[] getLoc()
 	{
-		double[] loc = new double[2];
-		loc[0] = xLoc;
-		loc[1] = yLoc;
-		
-		return loc; 
-	}
+		double[] location = new double[2];
+		location[0] = xLoc; 
+		location[1] = yLoc; 
+		return location;
+	} 
 }
