@@ -11,7 +11,13 @@ public class Satellite
 	  
        double[] home = {0, 0};
 
-       String printout = "\n\n" +
+       for (Location l : locate)
+       {
+           System.out.println("\nInitial Location for " + l.getID() + ": (" + getLocation(l.getLoc()) + ")");
+		   
+       }
+	   
+	   String printout = "\n\n" +
                "==========================\n";
 
        for (Location l : locate)
