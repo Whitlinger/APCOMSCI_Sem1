@@ -18,13 +18,6 @@ public class PictureTester
   }
   
   /** Method to test mirrorVertical */
-  public static void testMirrorVertical()
-  {
-    Picture caterpillar = new Picture("caterpillar.jpg");
-    caterpillar.explore();
-    caterpillar.mirrorVertical();
-    caterpillar.explore();
-  }
   
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
@@ -51,6 +44,77 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testKeepOnlyBlue()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.keepOnlyBlue(); 
+	  beach.explore();
+  }
+  
+  public static void testNegate()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.negate(); 
+	  beach.explore();
+  }
+  
+  public static void testGrayscale()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.grayscale(); 
+	  beach.explore();
+  }
+  
+  public static void testMirrorVertical()
+  {
+	  Picture temple = new Picture("temple.jpg");
+	  temple.explore();
+	  temple.mirrorVerticalRightToLeft(); 
+	  temple.explore();
+  }
+  
+  public static void testMirrorHorizontal()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.mirrorHorizontal(); 
+	  beach.explore();
+  }
+  
+  public static void testMirrorHorizontalBotToTop()
+  {
+	  Picture beach = new Picture("beach.jpg");
+	  beach.explore();
+	  beach.mirrorHorizontalBotToTop(); 
+	  beach.explore();
+  }
+  
+  public static void testMirrorArms()
+  {
+	  Picture beach = new Picture("snowman.jpg");
+	  beach.explore();
+	  beach.mirrorArms(); 
+	  beach.explore();
+  }
+  
+  public static void testMirrorGull()
+  {
+	  Picture gull = new Picture("seagull.jpg");
+	  gull.explore();
+	  gull.mirrorGull(); 
+	  gull.explore();
+  }
+  
+  public static void testMyCollage()
+  {
+	  Picture canvas = new Picture("640x480.jpg");
+	  canvas.myCollage();
+      canvas.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -66,13 +130,17 @@ public class PictureTester
     //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
+	//testMirrorHorizontal(); 
+	//testMirrorHorizontalBotToTop();
     //testMirrorTemple();
-    //testMirrorArms();
+    testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
+	//testMyCollage(); 
     //testCopy();
-    testEdgeDetection();
+	//testCopy2(); 
+    //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();

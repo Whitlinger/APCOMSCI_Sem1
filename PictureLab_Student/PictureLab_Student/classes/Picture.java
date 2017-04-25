@@ -13,7 +13,8 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
  * 
  * @author Barbara Ericson ericson@cc.gatech.edu
  */
-public class Picture extends SimplePicture 
+ 
+ public class Picture extends SimplePicture 
 {
   ///////////////////// constructors //////////////////////////////////
   
@@ -138,8 +139,10 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+		count++; 
       }
     }
+	System.out.println("Looped " + count + " times."); 
   }
   
   /** copy from the passed fromPic to the
@@ -230,17 +233,156 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void negate()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(255-pixelObj.getRed());
+		pixelObj.setGreen(255-pixelObj.getGreen());
+		pixelObj.setBlue(255-pixelObj.getBlue());
+      }
+    }
+  }
+  
+  public void grayscale()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        int gray = (pixelObj.getRed()+pixelObj.getGreen()+pixelObj.getBlue())/3;
+		pixelObj.setRed(gray);
+		pixelObj.setGreen(gray);
+		pixelObj.setBlue(gray);
+      }
+    }
+  }
+  
+  public void mirrorVerticalRightToLeft()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel leftPixel = null;
+      Pixel rightPixel = null;
+      int width = pixels[0].length;
+      for (int row = 0; row < pixels.length; row++)
+      {
+		for (int col = 0; col < width / 2; col++)
+		{
+			leftPixel = pixels[row][col];
+			rightPixel = pixels[row][width - 1 - col];
+			leftPixel.setColor(rightPixel.getColor());
+		}
+      }
+  }
+  
+  public void mirrorHorizontal()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel topPixel = null;
+      Pixel bottomPixel = null;
+      int height = pixels.length;
+      for (int row = 0; row < height/2; row++)
+      {
+		for (int col = 0; col < pixels[0].length; col++)
+		{
+			topPixel = pixels[row][col];
+			bottomPixel = pixels[height-1-row][col];
+			bottomPixel.setColor(topPixel.getColor());
+		}
+      }
+  }
+  
+  public void mirrorHorizontalBotToTop()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel topPixel = null;
+      Pixel bottomPixel = null;
+      int height = pixels.length;
+      for (int row = 0; row < height/2; row++)
+      {
+		for (int col = 0; col < pixels[0].length; col++)
+		{
+			topPixel = pixels[row][col];
+			bottomPixel = pixels[height-1-row][col];
+			topPixel.setColor(bottomPixel.getColor());
+		}
+      }
+  }
+  
+  public void mirrorArms()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel topPixel = null;
+      Pixel bottomPixel = null;
+      for (int row = 158; row < 222; row++)
+      {
+		for (int col = 101; col < 170; col++)
+		{
+			topPixel = pixels[row][col];
+			bottomPixel = pixels[286-1-row+158][col];
+			bottomPixel.setColor(topPixel.getColor());
+		}
+      }
+	  for (int row = 158; row < 222; row++)
+      {
+		for (int col = 239; col < 297; col++)
+		{
+			topPixel = pixels[row][col];
+			bottomPixel = pixels[286-1-row+158][col];
+			bottomPixel.setColor(topPixel.getColor());
+		}
+      }
+  }
+  
+  public void mirrorGull()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel leftPixel = null;
+      Pixel rightPixel = null;
+      for (int row = 230; row < 321; row++)
+      {
+		for (int col = 235; col < 347; col++)
+		{
+			rightPixel = pixels[row][col];
+			leftPixel = pixels[row][235-(col-235)];
+			leftPixel.setColor(rightPixel.getColor());
+		}
+      }
+  }
+  
+  public void myCollage()
+  {
+		Picture barb = new Picture("barbaraS.jpg");
+		Picture robot = new Picture("robot.jpg");
+		this.copy(barb,0,0);
+		this.copy(robot,100,0);
+		Picture barbBlue = new Picture(barb);
+		barbBlue.keepOnlyBlue();
+		this.copy(barbBlue,200,0);
+		Picture barbNoBlue = new Picture(barb);
+		barbNoBlue.zeroBlue();
+		this.copy(barbNoBlue,300,0);
+		Picture robotNoBlue = new Picture(robot);
+		robotNoBlue.zeroBlue();
+		this.copy(robotNoBlue,400,0);
+		this.copy(barb,500,0);
+		this.mirrorVertical(); 
+		this.write("mycollage.jpg");
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("snowman.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
-	beach.keepOnlyBlue(); 
   }
   
 } // this } is the end of class Picture, put all new methods before this
